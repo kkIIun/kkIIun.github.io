@@ -25,6 +25,33 @@
       scrollHeight: 0,
       objs: {
         container: document.querySelector("#hobby"),
+        messageA: document.querySelector("#hobby .title"),
+        cardA: document.querySelector("#hobby .game"),
+        cardB: document.querySelector("#hobby .coding"),
+        cardC: document.querySelector("#hobby .netflix"),
+        cardD: document.querySelector("#hobby .baseketball"),
+      },
+      values: {
+        messageA_opacity_in: [0, 1, { start: 0.05, end: 0.15 }],
+        cardA_opacity_in: [0, 1, { start: 0.15, end: 0.25 }],
+        cardB_opacity_in: [0, 1, { start: 0.25, end: 0.35 }],
+        cardC_opacity_in: [0, 1, { start: 0.35, end: 0.45 }],
+        cardD_opacity_in: [0, 1, { start: 0.45, end: 0.55 }],
+        messageA_translateY_in: [20, 0, { start: 0.05, end: 0.15 }],
+        cardA_translateY_in: [20, 0, { start: 0.15, end: 0.25 }],
+        cardB_translateY_in: [20, 0, { start: 0.25, end: 0.35 }],
+        cardC_translateY_in: [20, 0, { start: 0.35, end: 0.45 }],
+        cardD_translateY_in: [20, 0, { start: 0.45, end: 0.55 }],
+        messageA_opacity_out: [1, 0, { start: 0.7, end: 0.8 }],
+        cardA_opacity_out: [1, 0, { start: 0.7, end: 0.8 }],
+        cardB_opacity_out: [1, 0, { start: 0.7, end: 0.8 }],
+        cardC_opacity_out: [1, 0, { start: 0.7, end: 0.8 }],
+        cardD_opacity_out: [1, 0, { start: 0.7, end: 0.8 }],
+        messageA_translateY_out: [0, -20, { start: 0.7, end: 0.8 }],
+        cardA_translateY_out: [0, -20, { start: 0.7, end: 0.8 }],
+        cardB_translateY_out: [0, -20, { start: 0.7, end: 0.8 }],
+        cardC_translateY_out: [0, -20, { start: 0.7, end: 0.8 }],
+        cardD_translateY_out: [0, -20, { start: 0.7, end: 0.8 }],
       },
     },
     {
@@ -34,6 +61,32 @@
       scrollHeight: 0,
       objs: {
         container: document.querySelector("#pros-cons"),
+        imgA: document.querySelector("#pros-cons .img.A"),
+        imgB: document.querySelector("#pros-cons .img.B"),
+        imgC: document.querySelector("#pros-cons .img.C"),
+        pinA: document.querySelector("#pros-cons .pin.A"),
+        pinB: document.querySelector("#pros-cons .pin.B"),
+        pinC: document.querySelector("#pros-cons .pin.C"),
+        desA: document.querySelector("#pros-cons .desA"),
+        desB: document.querySelector("#pros-cons .desB"),
+        desC: document.querySelector("#pros-cons .desC"),
+      },
+      values: {
+        imgA_opacity_in: [0, 1, { start: 0.05, end: 0.15 }],
+        imgA_opacity_out: [1, 0, { start: 0.2, end: 0.25 }],
+        imgA_translateY_in: [20, 0, { start: 0.05, end: 0.15 }],
+        imgA_translateY_out: [0, -20, { start: 0.2, end: 0.25 }],
+        imgB_opacity_in: [0, 1, { start: 0.25, end: 0.35 }],
+        imgB_opacity_out: [1, 0, { start: 0.4, end: 0.45 }],
+        imgB_translateY_in: [20, 0, { start: 0.25, end: 0.35 }],
+        imgB_translateY_out: [0, -20, { start: 0.4, end: 0.45 }],
+        imgC_opacity_in: [0, 1, { start: 0.45, end: 0.55 }],
+        imgC_opacity_out: [1, 0, { start: 0.6, end: 0.65 }],
+        imgC_translateY_in: [20, 0, { start: 0.45, end: 0.55 }],
+        imgC_translateY_out: [0, -20, { start: 0.6, end: 0.65 }],
+        pinA_scaleY: [0.5, 1, { start: 0.1, end: 0.65 }],
+        pinB_scaleY: [0.5, 1, { start: 0.4, end: 0.65 }],
+        pinC_scaleY: [0.5, 1, { start: 0.7, end: 0.92 }],
       },
     },
     {
@@ -43,6 +96,10 @@
       scrollHeight: 0,
       objs: {
         container: document.querySelector("#mbti"),
+        messageA: document.querySelector("#mbti .messageA"),
+        messageB: document.querySelector("#mbti .messageB"),
+        messageC: document.querySelector("#mbti .messageC"),
+        messageD: document.querySelector("#mbti .messageD"),
       },
     },
   ];
@@ -72,7 +129,7 @@
     } else {
       rv = scrollRatio * (values[1] - values[0]) + values[0];
     }
-    console.log(scrollRatio);
+
     return rv;
   }
 
@@ -95,10 +152,263 @@
     document.body.setAttribute("id", `show-scene-${currentScene}`);
 
     if (enterNewScene) return;
-    // playAnimation();
+    playAnimation();
   }
 
-  function platAnimation() {}
+  function playAnimation() {
+    const objs = sceneInfo[currentScene].objs;
+    const values = sceneInfo[currentScene].values;
+    const currentYOffset = YOffset - prevScrollHeight;
+    const scrollHeight = sceneInfo[currentScene].scrollHeight;
+    const scrollRatio = currentYOffset / scrollHeight;
+
+    switch (currentScene) {
+      case 1:
+        if (scrollRatio <= 0.68) {
+          objs.messageA.style.opacity = calcValues(
+            values.messageA_opacity_in,
+            currentYOffset
+          );
+          objs.messageA.style.transform = `translate3d(${-50}%, ${calcValues(
+            values.messageA_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+          objs.cardA.style.opacity = calcValues(
+            values.cardA_opacity_in,
+            currentYOffset
+          );
+          objs.cardA.style.transform = `translate3d(0, ${calcValues(
+            values.cardA_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+          objs.cardB.style.opacity = calcValues(
+            values.cardB_opacity_in,
+            currentYOffset
+          );
+          objs.cardB.style.transform = `translate3d(0, ${calcValues(
+            values.cardB_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+          objs.cardC.style.opacity = calcValues(
+            values.cardC_opacity_in,
+            currentYOffset
+          );
+          objs.cardC.style.transform = `translate3d(0, ${calcValues(
+            values.cardC_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+          objs.cardD.style.opacity = calcValues(
+            values.cardD_opacity_in,
+            currentYOffset
+          );
+          objs.cardD.style.transform = `translate3d(0, ${calcValues(
+            values.cardD_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+        } else {
+          objs.messageA.style.opacity = calcValues(
+            values.messageA_opacity_out,
+            currentYOffset
+          );
+          objs.messageA.style.transform = `translate3d(${-50}%, ${calcValues(
+            values.messageA_translateY_out,
+            currentYOffset
+          )}% , 0)`;
+          objs.cardA.style.opacity = calcValues(
+            values.cardA_opacity_out,
+            currentYOffset
+          );
+          objs.cardA.style.transform = `translate3d(0, ${calcValues(
+            values.cardA_translateY_out,
+            currentYOffset
+          )}% , 0)`;
+          objs.cardB.style.opacity = calcValues(
+            values.cardB_opacity_out,
+            currentYOffset
+          );
+          objs.cardB.style.transform = `translate3d(0, ${calcValues(
+            values.cardB_translateY_out,
+            currentYOffset
+          )}% , 0)`;
+          objs.cardC.style.opacity = calcValues(
+            values.cardC_opacity_out,
+            currentYOffset
+          );
+          objs.cardC.style.transform = `translate3d(0, ${calcValues(
+            values.cardC_translateY_out,
+            currentYOffset
+          )}% , 0)`;
+          objs.cardD.style.opacity = calcValues(
+            values.cardD_opacity_out,
+            currentYOffset
+          );
+          objs.cardD.style.transform = `translate3d(0, ${calcValues(
+            values.cardD_translateY_out,
+            currentYOffset
+          )}% , 0)`;
+        }
+        break;
+
+      case 2:
+        if (scrollRatio <= 0.175) {
+          objs.imgA.style.opacity = calcValues(
+            values.imgA_opacity_in,
+            currentYOffset
+          );
+          objs.imgA.style.transform = `translate3d(0, ${calcValues(
+            values.imgA_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+          objs.desA.style.opacity = calcValues(
+            values.imgA_opacity_in,
+            currentYOffset
+          );
+          objs.desA.style.transform = `translate3d(0, ${calcValues(
+            values.imgA_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+          objs.pinA.style.opacity = calcValues(
+            values.imgA_opacity_in,
+            currentYOffset
+          );
+          objs.pinA.style.transform = `translate3d(0, ${calcValues(
+            values.imgA_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+        } else {
+          objs.imgA.style.opacity = calcValues(
+            values.imgA_opacity_out,
+            currentYOffset
+          );
+          objs.imgA.style.transform = `translate3d(0, ${calcValues(
+            values.imgA_translateY_out,
+            currentYOffset
+          )}% , 0)`;
+          objs.desA.style.opacity = calcValues(
+            values.imgA_opacity_out,
+            currentYOffset
+          );
+          objs.desA.style.transform = `translate3d(0, ${calcValues(
+            values.imgA_translateY_out,
+            currentYOffset
+          )}% , 0)`;
+          objs.pinA.style.opacity = calcValues(
+            values.imgA_opacity_out,
+            currentYOffset
+          );
+          objs.pinA.style.transform = `translate3d(0, ${calcValues(
+            values.imgA_translateY_out,
+            currentYOffset
+          )}% , 0)`;
+        }
+
+        if (scrollRatio <= 0.375) {
+          objs.imgB.style.opacity = calcValues(
+            values.imgB_opacity_in,
+            currentYOffset
+          );
+          objs.imgB.style.transform = `translate3d(0, ${calcValues(
+            values.imgB_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+          objs.desB.style.opacity = calcValues(
+            values.imgB_opacity_in,
+            currentYOffset
+          );
+          objs.desB.style.transform = `translate3d(0, ${calcValues(
+            values.imgB_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+          objs.pinB.style.opacity = calcValues(
+            values.imgB_opacity_in,
+            currentYOffset
+          );
+          objs.pinB.style.transform = `translate3d(0, ${calcValues(
+            values.imgB_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+        } else {
+          objs.imgB.style.opacity = calcValues(
+            values.imgB_opacity_out,
+            currentYOffset
+          );
+          objs.imgB.style.transform = `translate3d(0, ${calcValues(
+            values.imgB_translateY_out,
+            currentYOffset
+          )}% , 0)`;
+          objs.desB.style.opacity = calcValues(
+            values.imgB_opacity_out,
+            currentYOffset
+          );
+          objs.desB.style.transform = `translate3d(0, ${calcValues(
+            values.imgB_translateY_out,
+            currentYOffset
+          )}% , 0)`;
+          objs.pinB.style.opacity = calcValues(
+            values.imgB_opacity_out,
+            currentYOffset
+          );
+          objs.pinB.style.transform = `translate3d(0, ${calcValues(
+            values.imgB_translateY_out,
+            currentYOffset
+          )}% , 0)`;
+        }
+
+        if (scrollRatio <= 0.575) {
+          objs.imgC.style.opacity = calcValues(
+            values.imgC_opacity_in,
+            currentYOffset
+          );
+          objs.imgC.style.transform = `translate3d(0, ${calcValues(
+            values.imgC_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+          objs.desC.style.opacity = calcValues(
+            values.imgC_opacity_in,
+            currentYOffset
+          );
+          objs.desC.style.transform = `translate3d(0, ${calcValues(
+            values.imgC_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+          objs.pinC.style.opacity = calcValues(
+            values.imgC_opacity_in,
+            currentYOffset
+          );
+          objs.pinC.style.transform = `translate3d(0, ${calcValues(
+            values.imgC_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+        } else {
+          objs.imgC.style.opacity = calcValues(
+            values.imgC_opacity_out,
+            currentYOffset
+          );
+          objs.imgC.style.transform = `translate3d(0, ${calcValues(
+            values.imgC_translateY_out,
+            currentYOffset
+          )}% , 0)`;
+          objs.desC.style.opacity = calcValues(
+            values.imgC_opacity_out,
+            currentYOffset
+          );
+          objs.desC.style.transform = `translate3d(0, ${calcValues(
+            values.imgC_translateY_out,
+            currentYOffset
+          )}% , 0)`;
+          objs.pinC.style.opacity = calcValues(
+            values.imgC_opacity_out,
+            currentYOffset
+          );
+          objs.pinC.style.transform = `translate3d(0, ${calcValues(
+            values.imgC_translateY_out,
+            currentYOffset
+          )}% , 0)`;
+        }
+
+        break;
+    }
+  }
 
   function setLayout() {
     for (let i = 0; i < sceneInfo.length; i++) {
@@ -108,7 +418,7 @@
         sceneInfo[i].scrollHeight =
           sceneInfo[i].objs.content.offsetHeight + window.innerHeight * 0.5;
       }
-      console.log(sceneInfo[i].scrollHeight);
+
       sceneInfo[
         i
       ].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
