@@ -303,6 +303,39 @@ img {
   width: 350px;
 }
 
+.message {
+  opacity: 0;
+  color: #576071;
+  display: flex;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 45%;
+}
+
+.messageA {
+  font-size: 3rem;
+}
+
+.messageB {
+  margin: 3rem 0;
+  font-size: 3rem;
+}
+
+.messageC {
+  color: darkorange;
+  font-size: 3rem;
+  margin-bottom: 5rem;
+}
+
+.messageD {
+  line-height: 2;
+  font-size: 1.5rem;
+}
+
 @media (min-width: 1033px) {
   .sticky-elem {
     width: 600px;
