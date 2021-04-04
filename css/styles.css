@@ -15,9 +15,19 @@ body {
   margin: 0;
 }
 
+#show-scene-1 .nav {
+  position: fixed;
+  top: 0;
+  background-color: #1a508b;
+  opacity: 0.8;
+  -webkit-backdrop-filter: saturate(180%) blur(15px);
+  backdrop-filter: saturate(180%) blur(15px);
+}
+
 a {
   text-decoration: none;
   color: white;
+  font-family: "Nanum Myeongjo", serif;
 }
 
 .container {
@@ -121,6 +131,15 @@ section p {
   min-width: 300px;
   left: 70vw;
   top: 50rem;
+}
+
+.fa-arrow-down {
+  z-index: 10;
+  cursor: pointer;
+  color: white;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
 }
 
 #hobby {
