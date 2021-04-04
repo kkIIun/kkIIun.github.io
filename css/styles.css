@@ -16,6 +16,7 @@ body {
 }
 
 #show-scene-1 .nav {
+  transition-duration: 0.5s;
   position: fixed;
   top: 0;
   background-color: #1a508b;
@@ -149,6 +150,63 @@ section p {
   background: #fff3e6;
 }
 
+#hobby h1 {
+  /* opacity: 0; */
+  font-size: 3rem;
+  transform: translate3d(-50%, -50%, 0);
+  left: 50vw;
+  top: 20vh;
+}
+
+.hobby-box {
+  /* opacity: 0; */
+  top: 60%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  border-radius: 20px;
+  width: 640px;
+  height: 551px;
+  row-gap: 20px;
+  column-gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+}
+
+.sticky {
+  opacity: 0;
+  position: fixed;
+}
+
+.card h2 {
+  display: inline;
+}
+
+.card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+}
+
+.card-body img {
+  height: 100%;
+  border-radius: 10px;
+}
+
 @media (min-width: 1033px) {
   .sticky-elem {
     width: 600px;
@@ -164,5 +222,12 @@ section p {
   .sticky-elem {
     left: 50vw;
     top: 30rem;
+  }
+}
+
+@media (max-width: 670px) {
+  .hobby-box {
+    width: 400px;
+    height: 500px;
   }
 }
