@@ -21,10 +21,28 @@
     {
       // 1
       type: "sticky",
-      heightNum: 5,
+      heightNum: 3,
       scrollHeight: 0,
       objs: {
         container: document.querySelector("#hobby"),
+      },
+    },
+    {
+      // 2
+      type: "sticky",
+      heightNum: 3,
+      scrollHeight: 0,
+      objs: {
+        container: document.querySelector("#pros-cons"),
+      },
+    },
+    {
+      // 3
+      type: "sticky",
+      heightNum: 3,
+      scrollHeight: 0,
+      objs: {
+        container: document.querySelector("#mbti"),
       },
     },
   ];
@@ -82,6 +100,22 @@
 
   function platAnimation() {}
 
+  function setLayout() {
+    for (let i = 0; i < sceneInfo.length; i++) {
+      if (sceneInfo[i].type == "sticky") {
+        sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
+      } else if (sceneInfo[i].type == "normal") {
+        sceneInfo[i].scrollHeight =
+          sceneInfo[i].objs.content.offsetHeight + window.innerHeight * 0.5;
+      }
+      console.log(sceneInfo[i].scrollHeight);
+      sceneInfo[
+        i
+      ].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
+    }
+    setCanvas();
+  }
+
   function setCanvas() {
     const widthRatio = window.innerWidth / sceneInfo[0].objs.canvas.width;
     const heightRatio = window.innerHeight / sceneInfo[0].objs.canvas.height;
@@ -95,32 +129,14 @@
 
     sceneInfo[0].objs.canvas.style.transform = `scale(${canvasScaleRatio})`;
     sceneInfo[0].objs.context.drawImage(image, 0, 0);
-
-    for (let i = 0; i < sceneInfo.length; i++) {
-      if (sceneInfo[i].type == "sticky") {
-        sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
-      } else if (sceneInfo[i].type == "normal") {
-        console.log(sceneInfo[i].objs.content.offsetHeight);
-        sceneInfo[i].scrollHeight =
-          sceneInfo[i].objs.content.offsetHeight + window.innerHeight * 0.5;
-      }
-      sceneInfo[
-        i
-      ].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
-    }
   }
 
   window.addEventListener("scroll", () => {
     YOffset = window.pageYOffset;
     let body = document.querySelector("body");
     scrollLoop();
-    // if (YOffset > line) {
-    //   body.classList.add("local-nav-sticky");
-    // } else {
-    //   body.classList.remove("local-nav-sticky");
-    // }
   });
 
-  image.addEventListener("load", setCanvas);
+  image.addEventListener("load", setLayout);
   window.addEventListener("resize", setCanvas, false);
 })();
