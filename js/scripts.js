@@ -101,6 +101,24 @@
         messageC: document.querySelector("#mbti .messageC"),
         messageD: document.querySelector("#mbti .messageD"),
       },
+      values: {
+        messageA_opacity_in: [0, 1, { start: 0.02, end: 0.12 }], //0.13
+        messageA_translateY_in: [20, 0, { start: 0.02, end: 0.12 }],
+        messageA_opacity_out: [1, 0, { start: 0.15, end: 0.2 }],
+        messageA_translateY_out: [0, -20, { start: 0.15, end: 0.2 }],
+        messageB_opacity_in: [0, 1, { start: 0.2, end: 0.3 }], //0.32
+        messageB_translateY_in: [20, 0, { start: 0.2, end: 0.3 }],
+        messageB_opacity_out: [1, 0, { start: 0.35, end: 0.4 }],
+        messageB_translateY_out: [0, -20, { start: 0.35, end: 0.4 }],
+        messageC_opacity_in: [0, 1, { start: 0.4, end: 0.5 }], //0.52
+        messageC_translateY_in: [20, 0, { start: 0.4, end: 0.5 }],
+        messageC_opacity_out: [1, 0, { start: 0.55, end: 0.6 }],
+        messageC_translateY_out: [0, -20, { start: 0.55, end: 0.6 }],
+        messageD_opacity_in: [0, 1, { start: 0.6, end: 0.7 }], //0.72
+        messageD_translateY_in: [20, 0, { start: 0.6, end: 0.7 }],
+        messageD_opacity_out: [1, 0, { start: 0.75, end: 0.8 }],
+        messageD_translateY_out: [0, -20, { start: 0.75, end: 0.8 }],
+      },
     },
   ];
 
@@ -407,6 +425,84 @@
         }
 
         break;
+
+      case 3:
+        if (scrollRatio <= 0.13) {
+          objs.messageA.style.opacity = calcValues(
+            values.messageA_opacity_in,
+            currentYOffset
+          );
+          objs.messageA.style.transform = `translate3d(0, ${calcValues(
+            values.messageA_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+        } else {
+          // objs.messageA.style.opacity = calcValues(
+          //   values.messageA_opacity_out,
+          //   currentYOffset
+          // );
+          // objs.messageA.style.transform = `translate3d(0, ${calcValues(
+          //   values.messageA_translateY_out,
+          //   currentYOffset
+          // )}% , 0)`;
+        }
+        if (scrollRatio <= 0.32) {
+          objs.messageB.style.opacity = calcValues(
+            values.messageB_opacity_in,
+            currentYOffset
+          );
+          objs.messageB.style.transform = `translate3d(0, ${calcValues(
+            values.messageB_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+        } else {
+          // objs.messageB.style.opacity = calcValues(
+          //   values.messageB_opacity_out,
+          //   currentYOffset
+          // );
+          // objs.messageB.style.transform = `translate3d(0, ${calcValues(
+          //   values.messageB_translateY_out,
+          //   currentYOffset
+          // )}% , 0)`;
+        }
+        if (scrollRatio <= 0.52) {
+          objs.messageC.style.opacity = calcValues(
+            values.messageC_opacity_in,
+            currentYOffset
+          );
+          objs.messageC.style.transform = `translate3d(0, ${calcValues(
+            values.messageC_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+        } else {
+          // objs.messageC.style.opacity = calcValues(
+          //   values.messageC_opacity_out,
+          //   currentYOffset
+          // );
+          // objs.messageC.style.transform = `translate3d(0, ${calcValues(
+          //   values.messageC_translateY_out,
+          //   currentYOffset
+          // )}% , 0)`;
+        }
+        if (scrollRatio <= 0.72) {
+          objs.messageD.style.opacity = calcValues(
+            values.messageD_opacity_in,
+            currentYOffset
+          );
+          objs.messageD.style.transform = `translate3d(0, ${calcValues(
+            values.messageD_translateY_in,
+            currentYOffset
+          )}% , 0)`;
+        } else {
+          // objs.messageD.style.opacity = calcValues(
+          //   values.messageD_opacity_out,
+          //   currentYOffset
+          // );
+          // objs.messageD.style.transform = `translate3d(0, ${calcValues(
+          //   values.messageD_translateY_out,
+          //   currentYOffset
+          // )}% , 0)`;
+        }
     }
   }
 

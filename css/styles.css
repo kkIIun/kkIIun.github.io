@@ -317,7 +317,6 @@ img {
 }
 
 .message {
-  opacity: 0;
   color: #576071;
   display: flex;
   transform: translate(-50%, -50%);
@@ -330,21 +329,25 @@ img {
 }
 
 .messageA {
+  opacity: 0;
   font-size: 3rem;
 }
 
 .messageB {
+  opacity: 0;
   margin: 3rem 0;
   font-size: 3rem;
 }
 
 .messageC {
+  opacity: 0;
   color: darkorange;
   font-size: 3rem;
   margin-bottom: 5rem;
 }
 
 .messageD {
+  opacity: 0;
   line-height: 2;
   font-size: 1.5rem;
 }
