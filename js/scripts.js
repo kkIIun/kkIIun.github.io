@@ -168,32 +168,16 @@
       currentScene--;
     }
     document.body.setAttribute("id", `show-scene-${currentScene}`);
-    // document.getElementsByClassName(`${currentScene}`)[0].style.opacity = 1;
-    if (currentScene == 0) {
-      document.querySelector(
-        "#introduction .section-content"
-      ).style.opacity = 1;
-      document.querySelector("#hobby .section-content").style.opacity = 0;
-      document.querySelector("#pros-cons .section-content").style.opacity = 0;
-      document.querySelector("#mbti .section-content").style.opacity = 0;
-    } else if (currentScene == 1) {
-      document.querySelector(
-        "#introduction .section-content"
-      ).style.opacity = 0;
+
+    if (currentScene == 1) {
       document.querySelector("#hobby .section-content").style.opacity = 1;
       document.querySelector("#pros-cons .section-content").style.opacity = 0;
       document.querySelector("#mbti .section-content").style.opacity = 0;
     } else if (currentScene == 2) {
-      document.querySelector(
-        "#introduction .section-content"
-      ).style.opacity = 0;
       document.querySelector("#hobby .section-content").style.opacity = 0;
       document.querySelector("#pros-cons .section-content").style.opacity = 1;
       document.querySelector("#mbti .section-content").style.opacity = 0;
     } else if (currentScene == 3) {
-      document.querySelector(
-        "#introduction .section-content"
-      ).style.opacity = 0;
       document.querySelector("#hobby .section-content").style.opacity = 0;
       document.querySelector("#pros-cons .section-content").style.opacity = 0;
       document.querySelector("#mbti .section-content").style.opacity = 1;
