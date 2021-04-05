@@ -57,7 +57,7 @@
     {
       // 2
       type: "sticky",
-      heightNum: 3,
+      heightNum: 4,
       scrollHeight: 0,
       objs: {
         container: document.querySelector("#pros-cons"),
