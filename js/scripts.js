@@ -168,7 +168,36 @@
       currentScene--;
     }
     document.body.setAttribute("id", `show-scene-${currentScene}`);
-
+    // document.getElementsByClassName(`${currentScene}`)[0].style.opacity = 1;
+    if (currentScene == 0) {
+      document.querySelector(
+        "#introduction .section-content"
+      ).style.opacity = 1;
+      document.querySelector("#hobby .section-content").style.opacity = 0;
+      document.querySelector("#pros-cons .section-content").style.opacity = 0;
+      document.querySelector("#mbti .section-content").style.opacity = 0;
+    } else if (currentScene == 1) {
+      document.querySelector(
+        "#introduction .section-content"
+      ).style.opacity = 0;
+      document.querySelector("#hobby .section-content").style.opacity = 1;
+      document.querySelector("#pros-cons .section-content").style.opacity = 0;
+      document.querySelector("#mbti .section-content").style.opacity = 0;
+    } else if (currentScene == 2) {
+      document.querySelector(
+        "#introduction .section-content"
+      ).style.opacity = 0;
+      document.querySelector("#hobby .section-content").style.opacity = 0;
+      document.querySelector("#pros-cons .section-content").style.opacity = 1;
+      document.querySelector("#mbti .section-content").style.opacity = 0;
+    } else if (currentScene == 3) {
+      document.querySelector(
+        "#introduction .section-content"
+      ).style.opacity = 0;
+      document.querySelector("#hobby .section-content").style.opacity = 0;
+      document.querySelector("#pros-cons .section-content").style.opacity = 0;
+      document.querySelector("#mbti .section-content").style.opacity = 1;
+    }
     if (enterNewScene) return;
     playAnimation();
   }
@@ -427,46 +456,41 @@
         break;
 
       case 3:
-        if (scrollRatio <= 0.13) {
-          objs.messageA.style.opacity = calcValues(
-            values.messageA_opacity_in,
-            currentYOffset
-          );
-          objs.messageA.style.transform = `translate3d(0, ${calcValues(
-            values.messageA_translateY_in,
-            currentYOffset
-          )}% , 0)`;
-        }
-        if (scrollRatio <= 0.32) {
-          objs.messageB.style.opacity = calcValues(
-            values.messageB_opacity_in,
-            currentYOffset
-          );
-          objs.messageB.style.transform = `translate3d(0, ${calcValues(
-            values.messageB_translateY_in,
-            currentYOffset
-          )}% , 0)`;
-        }
-        if (scrollRatio <= 0.52) {
-          objs.messageC.style.opacity = calcValues(
-            values.messageC_opacity_in,
-            currentYOffset
-          );
-          objs.messageC.style.transform = `translate3d(0, ${calcValues(
-            values.messageC_translateY_in,
-            currentYOffset
-          )}% , 0)`;
-        }
-        if (scrollRatio <= 0.72) {
-          objs.messageD.style.opacity = calcValues(
-            values.messageD_opacity_in,
-            currentYOffset
-          );
-          objs.messageD.style.transform = `translate3d(0, ${calcValues(
-            values.messageD_translateY_in,
-            currentYOffset
-          )}% , 0)`;
-        }
+        objs.messageA.style.opacity = calcValues(
+          values.messageA_opacity_in,
+          currentYOffset
+        );
+        objs.messageA.style.transform = `translate3d(0, ${calcValues(
+          values.messageA_translateY_in,
+          currentYOffset
+        )}% , 0)`;
+
+        objs.messageB.style.opacity = calcValues(
+          values.messageB_opacity_in,
+          currentYOffset
+        );
+        objs.messageB.style.transform = `translate3d(0, ${calcValues(
+          values.messageB_translateY_in,
+          currentYOffset
+        )}% , 0)`;
+
+        objs.messageC.style.opacity = calcValues(
+          values.messageC_opacity_in,
+          currentYOffset
+        );
+        objs.messageC.style.transform = `translate3d(0, ${calcValues(
+          values.messageC_translateY_in,
+          currentYOffset
+        )}% , 0)`;
+
+        objs.messageD.style.opacity = calcValues(
+          values.messageD_opacity_in,
+          currentYOffset
+        );
+        objs.messageD.style.transform = `translate3d(0, ${calcValues(
+          values.messageD_translateY_in,
+          currentYOffset
+        )}% , 0)`;
     }
   }
 

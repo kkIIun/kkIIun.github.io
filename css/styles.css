@@ -26,6 +26,10 @@ body {
   background-color: rgba(0, 0, 0, 0);
 }
 
+.section-content {
+  opacity: 0;
+}
+
 #show-scene-1 .nav,
 #show-scene-3 .nav {
   transition-duration: 0.5s;
