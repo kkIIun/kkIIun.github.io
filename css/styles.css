@@ -22,6 +22,9 @@ body {
   letter-spacing: -0.05em;
   margin: 0;
 }
+#show-scene-0 .nav {
+  background-color: rgba(0, 0, 0, 0);
+}
 
 #show-scene-1 .nav,
 #show-scene-3 .nav {
@@ -76,13 +79,6 @@ a {
   width: 100vw;
   height: 70px;
   padding: 0 1rem;
-}
-
-.nav.active {
-  background-color: #1b262c;
-  opacity: 0.8;
-  -webkit-backdrop-filter: saturate(180%) blur(15px);
-  backdrop-filter: saturate(180%) blur(15px);
 }
 
 .nav-links {
