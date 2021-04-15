@@ -513,7 +513,7 @@
     window.addEventListener("resize", () => {
       height = window.innerHeight + "px";
       if (height != document.querySelector("#introduction").style.height) {
-        window.location.reload;
+        window.location.reload();
       } else {
         setCanvas();
       }
