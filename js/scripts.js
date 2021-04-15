@@ -491,7 +491,6 @@
         i
       ].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
     }
-    setCanvas();
   }
 
   function setCanvas() {
@@ -505,18 +504,22 @@
       canvasScaleRatio = widthRatio;
     }
 
-    sceneInfo[0].objs.canvas.style.transform = `scale(${canvasScaleRatio})`;
+    sceneInfo[0].objs.canvas.style.transform = `translate3d(-50%,-50%,0) scale(${canvasScaleRatio})`;
     sceneInfo[0].objs.context.drawImage(image, 0, 0);
   }
 
-  window.addEventListener("scroll", () => {
-    YOffset = window.pageYOffset;
-    let body = document.querySelector("body");
-    scrollLoop();
-  });
-
   window.addEventListener("load", () => {
     setLayout();
-    window.addEventListener("resize", setCanvas, false);
+    setCanvas();
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) {
+        window.location.reload();
+      }
+    });
+    window.addEventListener("scroll", () => {
+      YOffset = window.pageYOffset;
+      let body = document.querySelector("body");
+      scrollLoop();
+    });
   });
 })();
