@@ -154,7 +154,6 @@
   function scrollLoop() {
     enterNewScene = false;
     prevScrollHeight = 0;
-    console.log(YOffset, currentScene);
 
     for (let i = 0; i < currentScene; i++) {
       prevScrollHeight += sceneInfo[i].scrollHeight;
@@ -512,8 +511,11 @@
     setLayout();
     setCanvas();
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 900) {
-        window.location.reload();
+      height = window.innerHeight + "px";
+      if (height != document.querySelector("#introduction").style.height) {
+        window.location.reload;
+      } else {
+        setCanvas();
       }
     });
     window.addEventListener("scroll", () => {
